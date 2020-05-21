@@ -32,6 +32,7 @@ async function runCheck(text) {
     /* let outPut = document.getElementById("outPut");
     let inPut = document.getElementById("inPut");
     let text = inPut.value; */
+    text = text.replace(/\s/g, '');
     if (text === "") return;
     const digestValue = await digestMessage(text);
 
