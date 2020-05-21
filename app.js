@@ -32,7 +32,7 @@ async function runCheck(text) {
     /* let outPut = document.getElementById("outPut");
     let inPut = document.getElementById("inPut");
     let text = inPut.value; */
-    if (text === "") return false;
+    if (text === "") return;
     const digestValue = await digestMessage(text);
 
     hash = hexString(digestValue);
@@ -45,7 +45,7 @@ async function runCheck(text) {
     if (response.status !== 200) {
         console.log('Looks like there was a problem. Status Code: ' +
             response.status);
-        return;
+        return false;
     }
     const restext = await response.text();
 
@@ -53,18 +53,8 @@ async function runCheck(text) {
 
     let results = null;
     arr.forEach((s) => {
-
-        let a = s.split(":");
-
+        const a = s.split(":");
         if (a[0] == last) {
-
-            /* document.getElementById("outPut")
-                .innerHTML = "The password : " + text +
-                "SHA1 Hash : " + hash +
-                "Was found " + a[1] + "</b> times!"; */
-            /* console.log("The password : " + text +
-                "SHA1 Hash : " + hash +
-                "Was found " + a[1] + " times!") */
             results = { text, hash, count: a[1] }
         }
 
