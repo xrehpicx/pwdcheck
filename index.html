@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="check if ur password has been leaked" />
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="manifest" href="./manifest.json" /> -->
+    <title>Password Checker</title>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <main>
+
+        <div class="about">
+            <h1>Password Checker</h1>
+            <p>
+                the password you type will not be sent to the api, to know how will it check the password without
+                sending it click <br><a href="./how.html">here</a>
+            </p>
+        </div>
+
+
+        <form class="input">
+            <input type="password" placeholder="your password">
+            <button type="submit">check</button>
+        </form>
+
+        <div class="output">
+            <h1>😰</h1>
+            <span>searching....</span>
+        </div>
+
+    </main>
+    <script src="./app.js"></script>
+</body>
+
+</html>

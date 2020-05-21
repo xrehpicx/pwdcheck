@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #fffef7;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background: #18191b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    p {
+        text-align: center;
+        color: whitesmoke;
+        line-height: 1.6rem;
+    }
+}
+
+.input {
+    width: 100%;
+    outline: none;
+    padding: 20px;
+    padding-top: 0;
+
+    input {
+        width: 100%;
+        height: 50px;
+        outline: none;
+        background: rgb(10, 11, 12);
+        border: none;
+        caret-color: white;
+        text-align: center;
+        font-size: 1.2rem;
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.76);
+            text-align: center;
+        }
+    }
+
+    button {
+
+        width: 100%;
+        height: 40px;
+        padding-bottom: 4px;
+        border: none;
+        font-size: 1.2rem;
+        background: rgb(255, 58, 58);
+
+    }
+
+}
+
+.output {
+    display: none;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.searching {
+    animation: searchanim 2s infinite ease;
+}
+
+@keyframes searchanim {
+    0% {
+        background: rgb(255, 43, 43);
+    }
+
+    50% {
+        background: green;
+    }
+
+    100% {
+        background: rgb(255, 43, 43);
+    }
+}
+
+.warn {
+    background: rgb(255, 43, 43);
+}
+
+.safe {
+    background: green;
+    padding-bottom: 28px;
+}
+
+p {
+    line-height: 1.6rem;
+}
