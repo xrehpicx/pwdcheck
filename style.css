@@ -101,13 +101,30 @@ h1 {
 }
 
 .output {
-  display: none;
+  opacity: 0;
+  height: 30vh;
   width: 100%;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 20px;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
 }
 
 .searching {
+  opacity: 1;
   -webkit-animation: searchanim 2s infinite ease;
           animation: searchanim 2s infinite ease;
 }
@@ -137,10 +154,12 @@ h1 {
 }
 
 .warn {
+  opacity: 1;
   background: #ff2b2b;
 }
 
 .safe {
+  opacity: 1;
   background: green;
   padding-bottom: 28px;
 }

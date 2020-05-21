@@ -72,13 +72,20 @@ h1 {
 }
 
 .output {
-    display: none;
+    opacity: 0;
+    height: 30vh;
     width: 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
+    transition: all 500ms ease;
 }
 
 .searching {
+    opacity: 1;
     animation: searchanim 2s infinite ease;
 }
 
@@ -97,10 +104,12 @@ h1 {
 }
 
 .warn {
+    opacity: 1;
     background: rgb(255, 43, 43);
 }
 
 .safe {
+    opacity: 1;
     background: green;
     padding-bottom: 28px;
 }

@@ -66,33 +66,50 @@ async function runCheck(text) {
 }
 
 function onsubmit(e) {
-    e.preventDefault()
     console.log('running');
     const input = document.querySelector('input').value;
     const output = document.querySelector('.output');
-    const outputTitle = output.querySelector('h1');
-    const outputText = output.querySelector('span');
 
     (async () => {
         output.className = 'output';
-        output.style.display = 'block';
-        output.classList.add('searching');
-        outputTitle.textContent = '😰';
-        outputText.textContent = '';
+        //output.style.opacity = 1;
+        state('searching');
         const result = await runCheck(input);
         output.classList.remove('searching');
 
         if (result) {
-            output.classList.add('warn');
-            outputTitle.textContent = 'YOUR PASSWORD IS LEAKED';
-            outputText.textContent = `your password was found ${result.count} times in leaked password dumps`;
+            state('warn', result);
         } else {
-            output.classList.add('safe');
-            outputTitle.textContent = 'Your Password is safe to use';
-            outputText.textContent = '';
+            state('safe');
         }
 
     })();
+}
+
+
+function state(state, result) {
+    if (state === 'warn') {
+        setState('warn',
+            'YOUR PASSWORD IS LEAKED',
+            `your password was found ${result.count} times in leaked password dumps`);
+    } else if (state === 'safe') {
+        setState('safe',
+            'Your Password is safe to use', '');
+    } else if (state === 'searching') {
+        setState('searching',
+            '😰', 'searching....');
+    }
+}
+function setState(state, title, text) {
+    if (window.CURRENT_STATE !== state) {
+        const output = document.querySelector('.output');
+        const outputTitle = output.querySelector('h1');
+        const outputText = output.querySelector('span');
+        output.className = 'output ' + state;
+        outputTitle.textContent = title;
+        outputText.textContent = text;
+        window.CURRENT_STATE = state;
+    }
 }
 
 document.querySelector('input').addEventListener('input', e => {
@@ -100,14 +117,11 @@ document.querySelector('input').addEventListener('input', e => {
         onsubmit(e);
     } else {
         const output = document.querySelector('.output');
-        const outputTitle = output.querySelector('h1');
-        const outputText = output.querySelector('span');
         output.className = 'output';
-        output.style.display = 'none';
-        
     }
 });
 document.querySelector('form').addEventListener('submit', e => {
+    e.preventDefault()
     onsubmit(e);
     document.querySelector('input').value = '';
 });
