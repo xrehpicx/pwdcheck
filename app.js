@@ -69,8 +69,6 @@ function onsubmit(e) {
     e.preventDefault()
     console.log('running');
     const input = document.querySelector('input').value;
-    document.querySelector('input').value = '';
-
     const output = document.querySelector('.output');
     const outputTitle = output.querySelector('h1');
     const outputText = output.querySelector('span');
@@ -79,6 +77,8 @@ function onsubmit(e) {
         output.className = 'output';
         output.style.display = 'block';
         output.classList.add('searching');
+        outputTitle.textContent = '😰';
+        outputText.textContent = '';
         const result = await runCheck(input);
         output.classList.remove('searching');
 
@@ -95,4 +95,19 @@ function onsubmit(e) {
     })();
 }
 
-document.querySelector('form').addEventListener('submit', onsubmit)
+document.querySelector('input').addEventListener('input', e => {
+    if (e.target.value) {
+        onsubmit(e);
+    } else {
+        const output = document.querySelector('.output');
+        const outputTitle = output.querySelector('h1');
+        const outputText = output.querySelector('span');
+        output.className = 'output';
+        output.style.display = 'none';
+        
+    }
+});
+document.querySelector('form').addEventListener('submit', e => {
+    onsubmit(e);
+    document.querySelector('input').value = '';
+});
